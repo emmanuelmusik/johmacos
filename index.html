@@ -721,7 +721,7 @@
           </div>
         </div>
         <div class="form-foot">
-          <span class="form-note">Submitting opens your email app with this message ready to send.</span>
+          <span class="form-note">Sent directly — no email app required.</span>
           <button type="submit" class="btn btn-violet">Send message →</button>
         </div>
         <div class="form-status" id="formStatus">Opening your email app…</div>
@@ -782,7 +782,8 @@
   // contact form -> mailto
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
-  contactForm.addEventListener('submit', function(e){
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  contactForm.addEventListener('submit', async function(e){
     e.preventDefault();
     const name = document.getElementById('cf-name').value.trim();
     const email = document.getElementById('cf-email').value.trim();
@@ -790,17 +791,31 @@
     const budget = document.getElementById('cf-budget').value;
     const message = document.getElementById('cf-message').value.trim();
 
-    const subject = `New project inquiry: ${type} — ${name}`;
-    const body =
-      `Name: ${name}\n` +
-      `Email: ${email}\n` +
-      `Project type: ${type}\n` +
-      `Budget: ${budget}\n\n` +
-      `Message:\n${message}`;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    formStatus.classList.remove('show');
 
-    window.location.href = `mailto:hello@johmacos.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    formStatus.classList.add('show');
-    setTimeout(()=>formStatus.classList.remove('show'), 4000);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, type, budget, message }),
+      });
+
+      if (!res.ok) throw new Error('Request failed');
+
+      formStatus.textContent = "Thanks — your message is on its way. I'll reply within 24 hours.";
+      formStatus.style.color = '#1B8F5A';
+      formStatus.classList.add('show');
+      contactForm.reset();
+    } catch (err) {
+      formStatus.textContent = "Something went wrong sending that — please email hello@johmacos.com directly.";
+      formStatus.style.color = '#D14343';
+      formStatus.classList.add('show');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send message →';
+    }
   });
 </script>
 
