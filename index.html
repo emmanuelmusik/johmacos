@@ -160,12 +160,28 @@ footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;paddin
 .gm-note a{color:#fff;text-decoration:underline}
 body.gm-lock{overflow:hidden}
 @media(max-width:700px){.gm{padding:0}.gm-box{height:100%;border-radius:0}.gm-open{padding:8px 11px;font-size:.78rem}}
+
+.burger{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.4);border-radius:50%;background:transparent;cursor:pointer;padding:0;position:relative;flex:none}
+.burger span{position:absolute;left:12px;right:12px;height:2px;background:#E4CB85;border-radius:2px;transition:transform .25s,opacity .2s,top .25s}
+.burger span:nth-child(1){top:15px}.burger span:nth-child(2){top:21px}.burger span:nth-child(3){top:27px}
+nav.open .burger span:nth-child(1){top:21px;transform:rotate(45deg)}
+nav.open .burger span:nth-child(2){opacity:0}
+nav.open .burger span:nth-child(3){top:21px;transform:rotate(-45deg)}
+@media(max-width:900px){
+.burger{display:block}
+.nav-in{gap:12px}
+.links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;background:rgba(0,0,0,.97);border-top:1px solid #2a2a2a;padding:6px 22px 24px;box-shadow:0 24px 40px rgba(0,0,0,.4)}
+nav.open .links{display:flex}
+.links a:not(.btn){display:block;padding:18px 2px;font-size:1.15rem;border-bottom:1px solid #1f1f1f}
+.links .btn{display:block;text-align:center;margin-top:18px;padding:15px 12px;font-size:1rem}
+}
 </style>
 </head>
 <body id="top">
 <nav><div class="nav-in">
   <a href="#top" class="logo"><img src="logos/mark.png" alt="The Johmacos"><span><b>THE JOHMACOS</b><small><i></i>BY NDUBUISI UKWUANI<i></i></small></span></a>
-  <div class="links"><a href="#services">Services</a><a href="#work">Work</a><a href="#approach">Approach</a><a href="#contact" class="btn">Start a project</a></div>
+  <div class="links" id="navlinks"><a href="#services">Services</a><a href="#work">Products</a><a href="#approach">Approach</a><a href="#contact" class="btn">Start a project</a></div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
 </div></nav>
 
 <header class="hero">
@@ -173,7 +189,7 @@ body.gm-lock{overflow:hidden}
   <div class="hero-bot">
     <div>
       <p>The Johmacos is a software studio in Vienna. We build web apps, mobile apps and AI-powered products for founders and businesses: fast, fixed-price and built properly.</p>
-      <div class="cta"><a href="#contact" class="btn">Get an estimate</a><a href="#work" class="btn ghost">Our work</a></div>
+      <div class="cta"><a href="#contact" class="btn">Get an estimate</a><a href="#work" class="btn ghost">Our products</a></div>
     </div>
     <div class="built"><span class="mono">Products we built and run</span><div><a href="#work-secretary">Secretary</a><a href="#work-handycfo">HandyCFO</a><a href="#work-fxangel-academy">FXAngel Academy</a><a href="#work-guardian">Guardian</a><a href="#work-brightpath">BrightPath</a><a href="#work">+ more</a></div></div>
   </div>
@@ -192,7 +208,7 @@ body.gm-lock{overflow:hidden}
 </section>
 
 <section id="work">
-  <div class="head mono"><span>02.</span><span>Selected work</span></div>
+  <div class="head mono"><span>02.</span><span>Our products</span></div>
   <div class="intro"><h2>Products we've built <b>and run ourselves.</b></h2><p>Every product below is our own, built with the same process we use for clients. Running them ourselves means we know what it takes to keep software alive after launch.</p></div>
 
   <div class="work" id="work-guardian">
@@ -321,6 +337,15 @@ document.addEventListener('click',function(e){
 document.getElementById('gmX').addEventListener('click',close);
 gm.addEventListener('click',function(e){if(e.target===gm)close()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&gm.classList.contains('on'))close()});
+})();
+</script>
+<script>
+(function(){var n=document.querySelector('nav'),b=document.getElementById('burger');if(!n||!b)return;
+function set(o){n.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false')}
+b.addEventListener('click',function(){set(!n.classList.contains('open'))});
+document.querySelectorAll('#navlinks a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});
+window.addEventListener('resize',function(){if(innerWidth>900)set(false)});
 })();
 </script>
 </body>
