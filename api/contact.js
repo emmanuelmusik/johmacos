@@ -1,5 +1,6 @@
 // Vercel serverless function: /api/contact
-// Sends the Johmacos contact form to emmanuelmusik7@gmail.com via Resend.
+// Sends the Johmacos contact form via Resend. Recipient comes from TO_EMAIL and sender from FROM_EMAIL
+// (Vercel env vars); defaults keep it working in Resend sandbox mode.
 // Requires the RESEND_API_KEY environment variable to be set in Vercel.
 
 export default async function handler(req, res) {
@@ -46,8 +47,8 @@ export default async function handler(req, res) {
         // Use your own verified domain here once set up in Resend,
         // e.g. "Johmacos <hello@johmacos.com>". Until then, this
         // sandbox address works for delivering to your own inbox.
-        from: 'The Johmacos <onboarding@resend.dev>',
-        to: ['emmanuelmusik7@gmail.com'],
+        from: process.env.FROM_EMAIL || 'The Johmacos <onboarding@resend.dev>',
+        to: [process.env.TO_EMAIL || 'emmanuelmusik7@gmail.com'],
         reply_to: email,
         subject,
         html,
