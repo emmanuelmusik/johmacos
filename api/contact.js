@@ -1,3 +1,4 @@
+// (redeploy to pick up SMTP_PASS)
 // Vercel serverless function: /api/contact
 // Sends the Johmacos contact form via Resend. Recipient comes from TO_EMAIL and sender from FROM_EMAIL
 // (Vercel env vars); defaults keep it working in Resend sandbox mode.
