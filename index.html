@@ -176,6 +176,18 @@ nav.open .links{display:flex}
 .links .btn{display:block;text-align:center;margin-top:18px;padding:15px 12px;font-size:1rem}
 }
 .links .btn{background:#E4CB85;border:1px solid #E4CB85;color:#111!important;font-weight:500;transition:background .2s,border-color .2s}.links .btn:hover{background:#F1DFA6;border-color:#F1DFA6;color:#111!important}
+
+.gm-card{display:none;width:min(440px,100%);padding:34px 30px 28px;text-align:center;color:#fff;border-radius:22px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.4);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px)}
+.gm.soon .gm-box{display:none}.gm.soon .gm-card{display:block}
+.gm-card img{width:76px;height:76px;border-radius:18px;object-fit:contain;background:#fff;padding:6px;margin-bottom:16px}
+.gm-card .gm-pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#E4CB85;border:1px solid rgba(228,203,133,.6);border-radius:999px;padding:5px 12px;margin-bottom:14px}
+.gm-card h4{font-size:1.45rem;font-weight:500;letter-spacing:-.01em;margin:0 0 6px}
+.gm-card p{font-size:.95rem;line-height:1.55;color:rgba(255,255,255,.85);margin:10px 0 24px}
+.gm-card .gm-act{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.gm-card .gm-gold{background:#E4CB85;color:#111;border:1px solid #E4CB85;padding:12px 20px;border-radius:2px;font-size:.9rem;font-weight:500;text-decoration:none;font-family:inherit;cursor:pointer}
+.gm-card .gm-gold:hover{background:#F1DFA6}
+.gm-card .gm-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6);padding:12px 20px;border-radius:2px;font-size:.9rem;cursor:pointer;font-family:inherit}
+.gm-card .gm-ghost:hover{background:#fff;color:#000}
 </style>
 </head>
 <body id="top">
@@ -219,7 +231,7 @@ nav.open .links{display:flex}
     <div class="pane"><div class="stack"><div class="spec"><div class="spec-top mono"><i></i>Guardian</div><div class="row"><span>Status</span><span>Live</span></div><div class="row"><span>Platforms</span><span>iOS, Android</span></div><div class="row"><span>Features</span><span>Journal, mentors, live audio</span></div><div class="row"><span>Backend</span><span>Supabase</span></div></div></div></div>
   </div><div class="work flip" id="work-fxangel">
     <div class="txt"><div class="top mono"><span>02.</span><span>AI trading system</span></div>
-      <div><h3><img class="hl app" src="logos/fxangel.png" alt="fxangel logo" width="72" height="72" loading="lazy"><span><b>FXAngel.</b> Automated trading, real money.</span></h3><p>An automated system trading crypto futures, with exchange APIs, risk management and performance tuning driven by actual trade data.</p>
+      <div><h3><a class="hl-link" href="#contact" data-soon><img class="hl app" src="logos/fxangel.png" alt="fxangel logo" width="72" height="72" loading="lazy"></a><span><b><a class="name-link" href="#contact" data-soon>FXAngel.</a></b> Automated trading, real money.</span></h3><p>An automated system trading crypto futures, with exchange APIs, risk management and performance tuning driven by actual trade data.</p>
       <div class="tags mono"><span>Node.js</span><span>Binance API</span><span>Analytics</span></div></div></div>
     <div class="pane"><div class="stack"><div class="spec"><div class="spec-top mono"><i></i>FXAngel</div><div class="row"><span>Status</span><span>Live</span></div><div class="row"><span>Market</span><span>Binance USD-M Futures</span></div><div class="row"><span>Focus</span><span>Risk &amp; execution</span></div><div class="row"><span>Stack</span><span>Node.js</span></div></div></div></div>
   </div><div class="work" id="work-brightpath">
@@ -249,7 +261,7 @@ nav.open .links{display:flex}
     <div class="pane"><div class="stack"><div class="spec"><div class="spec-top mono"><i></i>FXAngel Academy</div><div class="row"><span>Status</span><span>Live on web</span></div><div class="row"><span>Money</span><span>Virtual funds</span></div><div class="row"><span>Markets</span><span>Crypto, forex</span></div><div class="row"><span>Leagues</span><span>Monthly seasons</span></div></div></div></div>
   </div><div class="work flip" id="work-brightpath-studio">
     <div class="txt"><div class="top mono"><span>08.</span><span>AI video production</span></div>
-      <div><h3><img class="hl tile" src="logos/brightpath-studio.png" alt="brightpath-studio logo" width="72" height="72" loading="lazy"><span><b>BrightPath Studio.</b> Lesson videos from a single prompt.</span></h3><p>Our own studio for making children's lesson videos: paste a prompt with characters and scenes and get a finished, downloadable video. Built for BrightPath first, and the base for a future public tool.</p>
+      <div><h3><a class="hl-link" href="#contact" data-soon><img class="hl tile" src="logos/brightpath-studio.png" alt="brightpath-studio logo" width="72" height="72" loading="lazy"></a><span><b><a class="name-link" href="#contact" data-soon>BrightPath Studio.</a></b> Lesson videos from a single prompt.</span></h3><p>Our own studio for making children's lesson videos: paste a prompt with characters and scenes and get a finished, downloadable video. Built for BrightPath first, and the base for a future public tool.</p>
       <div class="tags mono"><span>Node.js</span><span>Gemini</span><span>Grok</span><span>Claude</span><span>Railway</span></div></div></div>
     <div class="pane"><div class="stack"><div class="spec"><div class="spec-top mono"><i></i>BrightPath Studio</div><div class="row"><span>Status</span><span>In use</span></div><div class="row"><span>Input</span><span>One prompt</span></div><div class="row"><span>Output</span><span>Downloadable video</span></div><div class="row"><span>AI</span><span>Gemini, Grok, Claude</span></div></div></div></div>
   </div><div class="work" id="work-rose-academy">
@@ -317,11 +329,19 @@ document.getElementById('f').addEventListener('submit', async function(e){
   b.disabled=false; b.textContent='Send message';
 });
 </script>
-<div class="gm" id="gm" aria-hidden="true"><div class="gm-box" role="dialog" aria-modal="true" aria-label="App preview"><div class="gm-bar"><img id="gmImg" alt=""><div class="gm-title"><span id="gmName"></span><small id="gmHost"></small></div><a class="gm-open" id="gmOpen" target="_blank" rel="noopener">Open in new tab &#8599;</a><button class="gm-x" id="gmX" aria-label="Close">&times;</button></div><div class="gm-body"><iframe id="gmFrame" title="App preview" referrerpolicy="no-referrer" allow="clipboard-write" loading="lazy"></iframe><div class="gm-note" id="gmNote">Preview not loading? <a id="gmOpen2" target="_blank" rel="noopener">Open it in a new tab</a>.</div></div></div></div>
+<div class="gm" id="gm" aria-hidden="true"><div class="gm-card" id="gmCard" role="dialog" aria-modal="true" aria-label="Not yet available"><img id="gmCImg" alt=""><div><span class="gm-pill">Coming soon</span></div><h4 id="gmCName"></h4><p>This app is not yet available to the public. We are still polishing it. If you would like early access or want to hear when it launches, get in touch.</p><div class="gm-act"><a class="gm-gold" id="gmCContact" href="#contact">Contact us</a><button class="gm-ghost" id="gmCClose" type="button">Close</button></div></div><div class="gm-box" role="dialog" aria-modal="true" aria-label="App preview"><div class="gm-bar"><img id="gmImg" alt=""><div class="gm-title"><span id="gmName"></span><small id="gmHost"></small></div><a class="gm-open" id="gmOpen" target="_blank" rel="noopener">Open in new tab &#8599;</a><button class="gm-x" id="gmX" aria-label="Close">&times;</button></div><div class="gm-body"><iframe id="gmFrame" title="App preview" referrerpolicy="no-referrer" allow="clipboard-write" loading="lazy"></iframe><div class="gm-note" id="gmNote">Preview not loading? <a id="gmOpen2" target="_blank" rel="noopener">Open it in a new tab</a>.</div></div></div></div>
 <script>
 (function(){
 var gm=document.getElementById('gm'),fr=document.getElementById('gmFrame');
+function soon(a){
+  var w=a.closest('.work'),img=w.querySelector('h3 img'),nm=w.querySelector('.name-link');
+  document.getElementById('gmCName').textContent=nm?nm.textContent.replace(/\.$/,''):'';
+  var ci=document.getElementById('gmCImg');ci.src=img?img.getAttribute('src'):'';ci.style.display=img?'':'none';
+  gm.classList.add('soon','on');gm.setAttribute('aria-hidden','false');document.body.classList.add('gm-lock');
+}
 function open(a){
+  if(a.hasAttribute('data-soon')){soon(a);return}
+  gm.classList.remove('soon');
   var w=a.closest('.work'),url=a.href,img=w.querySelector('h3 img'),nm=w.querySelector('.name-link');
   document.getElementById('gmName').textContent=nm?nm.textContent.replace(/\.$/,''):'';
   document.getElementById('gmHost').textContent=url.replace(/^https?:\/\//,'').replace(/\/$/,'');
@@ -329,13 +349,15 @@ function open(a){
   document.getElementById('gmOpen').href=url;document.getElementById('gmOpen2').href=url;
   fr.src=url;gm.classList.add('on');gm.setAttribute('aria-hidden','false');document.body.classList.add('gm-lock');
 }
-function close(){gm.classList.remove('on');gm.setAttribute('aria-hidden','true');document.body.classList.remove('gm-lock');setTimeout(function(){fr.src='about:blank'},250)}
+function close(){gm.classList.remove('on');gm.setAttribute('aria-hidden','true');document.body.classList.remove('gm-lock');setTimeout(function(){fr.src='about:blank';if(!gm.classList.contains('on'))gm.classList.remove('soon')},300)}
 document.addEventListener('click',function(e){
   var a=e.target.closest('.work h3 a[href]');
   if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;
   e.preventDefault();open(a);
 });
 document.getElementById('gmX').addEventListener('click',close);
+document.getElementById('gmCClose').addEventListener('click',close);
+document.getElementById('gmCContact').addEventListener('click',function(){close()});
 gm.addEventListener('click',function(e){if(e.target===gm)close()});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&gm.classList.contains('on'))close()});
 })();
