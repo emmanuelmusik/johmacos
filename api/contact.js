@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
     const html = `
       <div style="font-family: sans-serif; line-height: 1.6;">
-        <h2>New project inquiry from johmacos.com</h2>
+        <h2>New project inquiry from The Johmacos website</h2>
         <p><strong>Name:</strong> ${escapeHtml(name)}</p>
         <p><strong>Email:</strong> ${escapeHtml(email)}</p>
         <p><strong>Project type:</strong> ${escapeHtml(type || 'Not specified')}</p>
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
         // Use your own verified domain here once set up in Resend,
         // e.g. "Johmacos <hello@johmacos.com>". Until then, this
         // sandbox address works for delivering to your own inbox.
-        from: 'Johmacos <onboarding@resend.dev>',
+        from: 'The Johmacos <onboarding@resend.dev>',
         to: ['emmanuelmusik7@gmail.com'],
         reply_to: email,
         subject,
