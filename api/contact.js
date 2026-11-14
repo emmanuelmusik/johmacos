@@ -3,6 +3,8 @@
 // (Vercel env vars); defaults keep it working in Resend sandbox mode.
 // Requires the RESEND_API_KEY environment variable to be set in Vercel.
 
+import nodemailer from 'nodemailer';
+
 export default async function handler(req, res) {
   // Only allow POST
   if (req.method !== 'POST') {
@@ -15,12 +17,6 @@ export default async function handler(req, res) {
     // Basic validation
     if (!name || !email || !message) {
       return res.status(400).json({ error: 'Missing required fields' });
-    }
-
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error('RESEND_API_KEY is not set');
-      return res.status(500).json({ error: 'Server not configured' });
     }
 
     const subject = `New project inquiry: ${type || 'General'} — ${name}`;
@@ -36,6 +32,32 @@ export default async function handler(req, res) {
         <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
       </div>
     `;
+
+    // Preferred: send through the info@johmacos.com mailbox (Namecheap Private Email SMTP)
+    if (process.env.SMTP_PASS) {
+      const user = process.env.SMTP_USER || 'info@johmacos.com';
+      const transport = nodemailer.createTransport({
+        host: process.env.SMTP_HOST || 'mail.privateemail.com',
+        port: 465,
+        secure: true,
+        auth: { user, pass: process.env.SMTP_PASS },
+      });
+      await transport.sendMail({
+        from: `The Johmacos <${user}>`,
+        to: process.env.TO_EMAIL || user,
+        replyTo: email,
+        subject,
+        html,
+      });
+      return res.status(200).json({ success: true });
+    }
+
+    // Fallback: Resend
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is not set');
+      return res.status(500).json({ error: 'Server not configured' });
+    }
 
     const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
