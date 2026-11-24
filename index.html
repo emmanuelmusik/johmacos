@@ -188,6 +188,8 @@ nav.open .links{display:flex}
 .gm-card .gm-gold:hover{background:#F1DFA6}
 .gm-card .gm-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.6);padding:12px 20px;border-radius:2px;font-size:.9rem;cursor:pointer;font-family:inherit}
 .gm-card .gm-ghost:hover{background:#fff;color:#000}
+.work h3 .hl.tile.dark{background:#000}
+.gm-card img.dk,.gm-bar img.dk{background:#000}
 </style>
 </head>
 <body id="top">
@@ -236,7 +238,7 @@ nav.open .links{display:flex}
     <div class="pane"><div class="stack"><div class="spec"><div class="spec-top mono"><i></i>BrightPath</div><div class="row"><span>Status</span><span>Live</span></div><div class="row"><span>Audience</span><span>Children with ASD</span></div><div class="row"><span>Built with</span><span>Special-ed teacher</span></div><div class="row"><span>AI</span><span>Claude API</span></div></div></div></div>
   </div><div class="work" id="work-sent">
     <div class="txt"><div class="top mono"><span>03.</span><span>Social matching</span></div>
-      <div><h3><a class="hl-link" href="https://sent.singles" target="_blank" rel="noopener"><img class="hl tile" src="logos/sent.png" alt="sent logo" width="72" height="72" loading="lazy"></a><span><b><a class="name-link" href="https://sent.singles" target="_blank" rel="noopener">Sent.</a></b> A faith-based dating app.</span></h3><p>Matches people by purpose and calling. Calling comes first, and photos are revealed only at a mutual match, with identity verification and a privacy-first model designed in from day one.</p>
+      <div><h3><a class="hl-link" href="https://sent.singles" target="_blank" rel="noopener"><img class="hl app" src="logos/sent.png" alt="sent logo" width="72" height="72" loading="lazy"></a><span><b><a class="name-link" href="https://sent.singles" target="_blank" rel="noopener">Sent.</a></b> A faith-based dating app.</span></h3><p>Matches people by purpose and calling. Calling comes first, and photos are revealed only at a mutual match, with identity verification and a privacy-first model designed in from day one.</p>
       <div class="tags mono"><span>React</span><span>Capacitor</span><span>Supabase</span><span>KYC</span></div></div></div>
     <div class="pane"><div class="stack"><div class="spec"><div class="spec-top mono"><i></i>Sent</div><div class="row"><span>Status</span><span>Live</span></div><div class="row"><span>Matching</span><span>Calling first</span></div><div class="row"><span>Photos</span><span>Revealed at match</span></div><div class="row"><span>Trust</span><span>Identity verified</span></div></div></div></div>
   </div><div class="work flip" id="work-secretary">
@@ -256,7 +258,7 @@ nav.open .links{display:flex}
     <div class="pane"><div class="stack"><div class="spec"><div class="spec-top mono"><i></i>FXAngel Academy</div><div class="row"><span>Status</span><span>Live on web</span></div><div class="row"><span>Money</span><span>Virtual funds</span></div><div class="row"><span>Markets</span><span>Crypto, forex</span></div><div class="row"><span>Leagues</span><span>Monthly seasons</span></div></div></div></div>
   </div><div class="work" id="work-brightpath-studio">
     <div class="txt"><div class="top mono"><span>07.</span><span>AI video production</span></div>
-      <div><h3><a class="hl-link" href="#contact" data-soon><img class="hl tile" src="logos/brightpath-studio.png" alt="brightpath-studio logo" width="72" height="72" loading="lazy"></a><span><b><a class="name-link" href="#contact" data-soon>BrightPath Studio.</a></b> Lesson videos from a single prompt.</span></h3><p>Our own studio for making children's lesson videos: paste a prompt with characters and scenes and get a finished, downloadable video. Built for BrightPath first, and the base for a future public tool.</p>
+      <div><h3><a class="hl-link" href="#contact" data-soon><img class="hl tile dark" src="logos/brightpath-studio.png" alt="brightpath-studio logo" width="72" height="72" loading="lazy"></a><span><b><a class="name-link" href="#contact" data-soon>BrightPath Studio.</a></b> Lesson videos from a single prompt.</span></h3><p>Our own studio for making children's lesson videos: paste a prompt with characters and scenes and get a finished, downloadable video. Built for BrightPath first, and the base for a future public tool.</p>
       <div class="tags mono"><span>Node.js</span><span>Gemini</span><span>Grok</span><span>Claude</span><span>Railway</span></div></div></div>
     <div class="pane"><div class="stack"><div class="spec"><div class="spec-top mono"><i></i>BrightPath Studio</div><div class="row"><span>Status</span><span>In use</span></div><div class="row"><span>Input</span><span>One prompt</span></div><div class="row"><span>Output</span><span>Downloadable video</span></div><div class="row"><span>AI</span><span>Gemini, Grok, Claude</span></div></div></div></div>
   </div><div class="work flip" id="work-rose-academy">
@@ -331,7 +333,7 @@ var gm=document.getElementById('gm'),fr=document.getElementById('gmFrame');
 function soon(a){
   var w=a.closest('.work'),img=w.querySelector('h3 img'),nm=w.querySelector('.name-link');
   document.getElementById('gmCName').textContent=nm?nm.textContent.replace(/\.$/,''):'';
-  var ci=document.getElementById('gmCImg');ci.src=img?img.getAttribute('src'):'';ci.style.display=img?'':'none';
+  var ci=document.getElementById('gmCImg');ci.src=img?img.getAttribute('src'):'';ci.classList.toggle('dk',!!(img&&img.classList.contains('dark')));ci.style.display=img?'':'none';
   gm.classList.add('soon','on');gm.setAttribute('aria-hidden','false');document.body.classList.add('gm-lock');
 }
 function open(a){
@@ -340,7 +342,7 @@ function open(a){
   var w=a.closest('.work'),url=a.href,img=w.querySelector('h3 img'),nm=w.querySelector('.name-link');
   document.getElementById('gmName').textContent=nm?nm.textContent.replace(/\.$/,''):'';
   document.getElementById('gmHost').textContent=url.replace(/^https?:\/\//,'').replace(/\/$/,'');
-  var gi=document.getElementById('gmImg'); if(img){gi.src=img.getAttribute('src');gi.style.display=''}else{gi.style.display='none'}
+  var gi=document.getElementById('gmImg'); if(img){gi.src=img.getAttribute('src');gi.classList.toggle('dk',img.classList.contains('dark'));gi.style.display=''}else{gi.style.display='none'}
   document.getElementById('gmOpen').href=url;document.getElementById('gmOpen2').href=url;
   fr.src=url;gm.classList.add('on');gm.setAttribute('aria-hidden','false');document.body.classList.add('gm-lock');
 }
